@@ -1,0 +1,42 @@
+.PokePreviewCard{
+    width: 200px;
+}
+.cardContainer{
+    display: grid;
+    place-items: center;
+    background-color: red;
+    width: 250px;
+}
+.abilities{
+    display: grid!important;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    width: 250px;
+}
+.abilitieText{
+    display: grid!important;
+    width: min-content!important;
+    padding: 0!important;
+    font-size: 13px;
+    font-weight: 800;
+}
+.bottomSectionContainer{
+    display: grid!important;
+    grid-template-columns: min-content 1fr min-content ;
+}
+.typesContainer{
+    display: grid!important;
+    width: 100px!important;
+    grid-template-columns: 1fr 1fr ;
+    place-items: center;
+}
+.typesText{
+    width: min-content!important;
+    padding: 0!important;
+    font-size: 13px;
+    font-weight: 800;
+}
+.shinyButton{
+    grid-area: 1/ 3 / 2/ 4;
+}
+
