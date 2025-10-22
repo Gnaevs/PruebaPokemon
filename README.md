@@ -31,3 +31,10 @@ npm install
 ```bash
 npm run dev
 ```
+
+
+
+Las credenciales de la pantalla de inicio
+
+admin
+1234
