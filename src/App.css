@@ -5,35 +5,42 @@
   padding: 2rem;
   text-align: center;
 }
-.MainContainer{
-  padding-bottom: 5px!important;
+
+.MainContainer {
+  padding-bottom: 5px !important;
 }
+
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
+
 .card {
   display: grid;
   justify-self: center;
   width: 300px;
   grid-gap: 1em;
 }
+
 .loginbutton {
   display: grid;
   width: 150px;
   place-self: center;
-  color: azure!important;
-  background-color: #48515E!important;
-  
+  color: azure !important;
+  background-color: #48515E !important;
+
 }
+
 .loginForm {
   display: grid;
 }
@@ -42,6 +49,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -61,10 +69,10 @@
   color: #888;
 }
 
-.tittle{
+.tittle {
   place-self: center start;
 }
 
-div{
+div {
   padding: 0 !important;
 }

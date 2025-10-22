@@ -1,25 +1,35 @@
 import { useEffect, useState } from "react";
-import { getPokemons,  type PokemonListResponse } from "../../pokeApi/pokeCall.ts";
+import {
+  getPokemonRow,
+  type PokemonRowResponse,
+} from "../../pokeApi/pokeCall.ts";
 import {
   Box,
   CircularProgress,
   Typography,
-  List,
   ListItem,
   Container,
   Paper,
   Stack,
   Button,
+  Modal,
 } from "@mui/material";
 
-const PokemonList = () => {
-  const [data, setData] = useState<PokemonListResponse | null>(null);
+interface Props {
+  pokemonURL?: string | null;
+}
+
+const GridItem = ({ pokemonURL }: Props) => {
+  const [data, setData] = useState<PokemonRowResponse | null>(null);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getPokemons(10); // obtiene 10 pokémon
+        const result = await getPokemonRow(
+          pokemonURL?.split("/").filter(Boolean).pop()
+        );
         setData(result);
       } catch (error) {
         console.error("Error al obtener los Pokémon:", error);
@@ -30,34 +40,99 @@ const PokemonList = () => {
 
     fetchData();
   }, []);
-
   if (loading) return <CircularProgress />;
 
   return (
     <Box>
-      <Paper className="cardContainer" sx={{width: 250 , height: 300 ,}}>
-        <img
-              className="PokePreviewCard"
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-            />
-            <Typography> bulbasour</Typography>
-            <Stack className="abilities" direction="row">
-                <ListItem className="abilitieText">Habilidad</ListItem>
-                <ListItem className="abilitieText">Habilidad</ListItem>
-                <ListItem className="abilitieText">Habilidad</ListItem>
-            </Stack>
-            <Container className="bottomSectionContainer">
-                <Stack className="typesContainer">
-                    <ListItem className="typesText">tipo</ListItem>
-                    <ListItem className="typesText">tipo</ListItem>
-                </Stack>
-                <Button className="shinyButton" variant="outlined">
-                    Shiny
-                </Button>
-            </Container>
+      <Paper
+        className="cardContainer"
+        elevation={5}
+        sx={{ width: 250, height: 300 }}
+      >
+        <img className="PokePreviewCard" src={data?.sprites.front_default} />
+        <Typography> {data?.name} </Typography>
+        <Stack
+          className="abilities"
+          direction="row"
+          sx={{
+            gridTemplateColumns:
+              data?.abilities.length === 1
+                ? "1fr"
+                : data?.abilities.length === 2
+                ? "1fr 1fr"
+                : "1fr 1fr 1fr",
+          }}
+        >
+          {data?.abilities.map((ability?) => (
+            <ListItem className="abilitieText">
+              {ability?.ability?.name}
+            </ListItem>
+          ))}
+        </Stack>
+        <Container className="bottomSectionContainer">
+          <Stack
+            className="typesContainer"
+            sx={{
+              gridTemplateColumns: data?.types.length === 1 ? "1fr" : "1fr 1fr",
+            }}
+          >
+            {data?.types.map((type) => (
+              <ListItem className="typesText">{type.type.name}</ListItem>
+            ))}
+          </Stack>
+
+          <Button
+            className="shinyButton"
+            variant="contained"
+            sx={{
+              display: "grid!important",
+              width: "50px!important",
+              height: "min-content",
+              placeSelf: "center center",
+            }}
+            onClick={() => setOpen(true)}
+          >
+            Shiny
+          </Button>
+
+          <Modal
+            open={open}
+            onClose={() => setOpen(false)}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Box
+              sx={{
+                backgroundColor: "white",
+                borderRadius: 2,
+                boxShadow: 24,
+                p: 2,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={data?.sprites.front_shiny}
+                alt="Shiny Pokémon"
+                style={{ width: "150px", height: "150px" }}
+              />
+              <Button
+                onClick={() => setOpen(false)}
+                variant="outlined"
+                sx={{ mt: 2, marginBottom: 2 }}
+              >
+                Cerrar
+              </Button>
+            </Box>
+          </Modal>
+        </Container>
       </Paper>
     </Box>
   );
 };
 
-export default PokemonList;
+export default GridItem;

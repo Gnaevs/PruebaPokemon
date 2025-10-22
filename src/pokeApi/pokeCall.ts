@@ -24,7 +24,7 @@ export interface PokemonRowResponse {
 }
 
 
-//Resultado
+//Resultados
 export const getPokemons = async (limit = 5, offset = 0): Promise<PokemonListResponse> => {
     const response = await pokeApi.get<PokemonListResponse>(`pokemon?limit=${limit}&offset=${offset}`);
     return response.data;

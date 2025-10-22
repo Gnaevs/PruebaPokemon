@@ -4,18 +4,9 @@ import {
   Container,
   Paper,
   Button,
-  CircularProgress,
-  Typography,
   Pagination,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import {
-  Link as RouterLink,
-  useNavigate,
-  Route,
-  Routes,
-  Navigate,
-} from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
 import ListView from "./components/list/ListView";
@@ -25,7 +16,6 @@ import { getPokemons, type PokemonListResponse } from "./pokeApi/pokeCall.ts";
 import React from "react";
 
 const PokemonView = () => {
-  
   const [data, setData] = useState<PokemonListResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = React.useState(1);
@@ -54,7 +44,7 @@ const PokemonView = () => {
 
   return (
     <>
-      <Container sx={{ width: 1000 }}>
+      <Container sx={{ width: 1080 }}>
         <Paper className="MainContainer" elevation={9} sx={{ width: "100%" }}>
           <Container
             sx={{ display: "grid", padding: "10px!important" }}
@@ -130,26 +120,25 @@ const PokemonView = () => {
             )}
           </Box>
           {view === "list" ? (
-                        <Container
-            sx={{
-              display: "grid",
-              placeContent: "center",
-              marginTop: 1,
-              marginBottom: 1,
-            }}
-          >
-            <Pagination
-              count={data ? Math.ceil(data.count / 5) : 1}
-              defaultPage={page}
-              variant="outlined"
-              shape="rounded"
-              onChange={handleChange}
-            />
-          </Container>
-            ) : (
-              <></>
-            )}
-
+            <Container
+              sx={{
+                display: "grid",
+                placeContent: "center",
+                marginTop: 1,
+                marginBottom: 1,
+              }}
+            >
+              <Pagination
+                count={data ? Math.ceil(data.count / 5) : 1}
+                defaultPage={page}
+                variant="outlined"
+                shape="rounded"
+                onChange={handleChange}
+              />
+            </Container>
+          ) : (
+            <></>
+          )}
         </Paper>
       </Container>
     </>
