@@ -64,8 +64,8 @@ const GridItem = ({ pokemonURL }: Props) => {
           }}
         >
           {data?.abilities.map((ability?) => (
-            <ListItem className="abilitieText">
-              {ability?.ability?.name}
+            <ListItem key={data?.name + "-" + ability?.ability.name} className="abilitieText">
+              {ability?.ability.name}
             </ListItem>
           ))}
         </Stack>
@@ -77,7 +77,7 @@ const GridItem = ({ pokemonURL }: Props) => {
             }}
           >
             {data?.types.map((type) => (
-              <ListItem className="typesText">{type.type.name}</ListItem>
+              <ListItem key={data?.name + "-" + type?.type.name} className="typesText">{type?.type.name}</ListItem>
             ))}
           </Stack>
 
@@ -118,7 +118,7 @@ const GridItem = ({ pokemonURL }: Props) => {
               <img
                 src={data?.sprites.front_shiny}
                 alt="Shiny Pokémon"
-                style={{ width: "150px", height: "150px" }}
+                style={{ width: "250px", height: "250px" }}
               />
               <Button
                 onClick={() => setOpen(false)}

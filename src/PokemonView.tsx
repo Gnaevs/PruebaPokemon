@@ -78,6 +78,7 @@ const PokemonView = () => {
                   <SearchIcon />
                 </IconButton>
                 <InputBase
+                  disabled
                   sx={{ ml: 1 }}
                   placeholder="Buscar Pokémon"
                   inputProps={{ "aria-label": "Buscar Pokémon" }}

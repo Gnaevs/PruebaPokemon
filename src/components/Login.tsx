@@ -1,16 +1,11 @@
 import { useState } from "react";
 import {
-  Avatar,
   Box,
   Container,
-  FormControlLabel,
   Paper,
   TextField,
   Typography,
-  Checkbox,
   Button,
-  Grid,
-  Link,
 } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
@@ -48,9 +43,10 @@ const Login = () => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container>
       <h1>Romeo Lisandro Ruiz Alvarado</h1>
-      <h2>Prueba Tecnica: Podedex</h2>
+      <h2>Usuario: admin</h2>
+      <h2>Contraseña: 1234</h2>
       <Paper elevation={10} sx={{ marginTop: 8, padding: 2 }}>
         <Box
           className="loginForm"

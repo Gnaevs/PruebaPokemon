@@ -53,12 +53,12 @@ const ListRow = ({ pokemonURL }: Props) => {
           </ListItem>
           <ListItem className="cell">
             {data?.types.map((type) => (
-              <Typography>{type.type.name}</Typography>
+              <Typography key={data?.name + "-" + type.type.name}>{type.type.name}</Typography>
             ))}
           </ListItem>
           <ListItem className="cell" sx={{ gridTemplateRows: "30px 30px" }}>
             {data?.abilities.map((ability?) => (
-              <Typography>{ability?.ability?.name}</Typography>
+              <Typography key={data?.name + "-" + ability?.ability?.name}>{ability?.ability?.name}</Typography>
             ))}
           </ListItem>
         </Stack>

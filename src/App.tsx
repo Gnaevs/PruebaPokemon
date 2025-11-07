@@ -1,7 +1,7 @@
 
 import './App.css'
 import { Route, Routes } from "react-router-dom";
-import Login from './Login.tsx';
+import Login from './components/Login.tsx';
 import PokemonView from './PokemonView.tsx';
 
 function App() {

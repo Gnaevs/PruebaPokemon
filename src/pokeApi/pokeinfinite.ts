@@ -6,7 +6,7 @@ export const usePokemons = () => {
   const { data, error, fetchNextPage, status, hasNextPage } = useInfiniteQuery<PokemonListResponse>({
     queryKey: ["pokemons"],
     queryFn: async ({ pageParam = 0 }) => {
-      const res = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${pageParam}&limit=8`);
+      const res = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${pageParam}&limit=12`);
       if (!res.ok) throw new Error("Error al obtener los Pokémon");
       return res.json();
     },

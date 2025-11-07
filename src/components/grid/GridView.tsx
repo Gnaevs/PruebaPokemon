@@ -13,6 +13,7 @@ const GridView = () => {
 
   return (
     <>
+      <Container sx={{height: "110%"}}>
       <InfiniteScroll
         dataLength={pokemons.length}
         next={fetchNextPage}
@@ -26,6 +27,7 @@ const GridView = () => {
           ))}
         </Container>
       </InfiniteScroll>
+      </Container>
     </>
   );
 };
