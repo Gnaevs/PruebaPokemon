@@ -31,7 +31,7 @@ export const usePokemons = () => {
   const pageData = useMemo(() =>{
     if(!data) return [];
     return data.pages.flatMap((page) => page.count);
-    }
+    }, []
   )
   return {
     pageData,

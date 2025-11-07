@@ -22,9 +22,10 @@ const ListRow = ({ pokemonURL }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getPokemonRow(
-          pokemonURL?.split("/").filter(Boolean).pop()
-        );
+        const idString = pokemonURL?.split("/").filter(Boolean).pop();
+        const id = idString ? Number(idString) : undefined;
+
+        const result = await getPokemonRow(id);
         setData(result);
       } catch (error) {
         console.error("Error al obtener los Pokémon:", error);
@@ -35,7 +36,6 @@ const ListRow = ({ pokemonURL }: Props) => {
 
     fetchData();
   }, []);
-  const [view, setView] = useState<"list" | "grid">("list");
   if (loading) return <CircularProgress />;
 
   return (

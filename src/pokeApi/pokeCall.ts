@@ -19,7 +19,16 @@ export interface PokemonRowResponse {
         front_shiny: string;
     };
     abilities: {
-        name: string;
+        ability: {
+            name: string;
+            url: string;
+        };
+    }[];
+    types: {
+        type: {
+            name: string;
+            url: string;
+        };
     }[];
 }
 

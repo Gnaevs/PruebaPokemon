@@ -4,10 +4,9 @@ import {
   Container,
   Paper,
   TextField,
-  Typography,
   Button,
 } from "@mui/material";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 type Form = {
   username: string;
@@ -18,7 +17,8 @@ const Login = () => {
   const USER: Form = { username: "admin", password: "1234" };
 
   const [form, setForm] = useState<Form>({ username: "", password: "" });
-  const [error, setError] = useState<string>("");
+  //error
+  const [, setError] = useState<string>("");
   const navigate = useNavigate();
 
   const handleChange = (

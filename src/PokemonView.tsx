@@ -17,7 +17,7 @@ import React from "react";
 
 const PokemonView = () => {
   const [data, setData] = useState<PokemonListResponse | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [page, setPage] = React.useState(1);
   const handleChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);

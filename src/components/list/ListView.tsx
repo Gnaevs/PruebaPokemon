@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
 import ListRow from "./ListRow";
-import Pagination from "@mui/material/Pagination";
 import {
   Container,
   ListItem,
-  Typography,
 } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import "./list.css";
