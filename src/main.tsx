@@ -11,7 +11,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/List-And-Grid-View-Pokemon">
     <QueryClientProvider client={queryClient}>
       <App />
       </QueryClientProvider>
